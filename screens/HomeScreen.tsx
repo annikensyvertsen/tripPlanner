@@ -2,7 +2,6 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useContext } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import { PrimaryButton } from "../components";
 
 import Firebase from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider";
@@ -39,7 +38,6 @@ export default function HomeScreen({ navigation }: Props) {
         <Button
           onPress={() => navigation.navigate("Profile")}
           title="Go to profile"
-          color="#fff"
         />
       </View>
     </View>
@@ -58,7 +56,6 @@ export default function HomeScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e93b81",
     paddingTop: 50,
     paddingHorizontal: 12,
   },

@@ -1,21 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider";
-import cabinTrips from "../cabinTrips.json";
+import trips from "../cabinTrips.json";
+import CabinTripCard from "../components/CabinTripCard";
+import { cardStyles, textStyles } from "../styles";
+import { Cabin } from "../types";
 
 export default function CabinTrip() {
-  const { user } = useContext(AuthenticatedUserContext);
-
-  const [cabinTrips, setCabinTrips] = useState(null);
+  const [cabinTrips, setCabinTrips] = useState<any | null>();
 
   useEffect(() => {
-    setCabinTrips(cabinTrips);
-    console.log("cabintrips", cabinTrips);
+    setCabinTrips(trips);
+    console.log("cabintrips", trips);
   }, []);
-  console.log("Hallo");
+
   return (
     <View style={styles.container}>
-      <Text>One cabin</Text>
+      <Text>Kommende hytteturer</Text>
+      {cabinTrips?.map((trip: any) => {
+        return <CabinTripCard cabinTrip={trip} />;
+      })}
     </View>
   );
 }
