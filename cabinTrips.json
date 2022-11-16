@@ -1,5 +1,6 @@
 [
     {
+    "id": "sdsdaffa",
     "name": "trysiltur",
     "members": "111, 222",
     "address": "vesleveien 73, 4039 Trondheim",
@@ -8,12 +9,12 @@
     "groups": ""
     } ,
     {
-        "name": "juletur",
-        "members": "111, 222",
-        "address": "vesleveien 73, 4039 Trondheim",
-        "startDate": "23 des",
-        "endDate": "25 des",
-        "groups": ""
-        } 
-
+    "id": "pøødaffa",
+    "name": "juletur",
+    "members": "111, 222",
+    "address": "vesleveien 73, 4039 Trondheim",
+    "startDate": "23 des",
+    "endDate": "25 des",
+    "groups": ""
+    } 
 ]   

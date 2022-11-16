@@ -20,24 +20,13 @@ type RootStackParamList = {
   Signup: undefined;
 };
 
-type Props = NativeStackScreenProps<RootStackParamList, "Signup", "MyStack">;
+type Props = NativeStackScreenProps<RootStackParamList, "Signup", "Login">;
 
 export default function LoginScreen({ navigation }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [rightIcon, setRightIcon] = useState("eye");
   const [loginError, setLoginError] = useState("");
-
-  const handlePasswordVisibility = () => {
-    if (rightIcon === "eye") {
-      setRightIcon("eye-off");
-      setPasswordVisibility(!passwordVisibility);
-    } else if (rightIcon === "eye-off") {
-      setRightIcon("eye");
-      setPasswordVisibility(!passwordVisibility);
-    }
-  };
 
   const onLogin = async () => {
     try {

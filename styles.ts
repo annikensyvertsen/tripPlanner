@@ -5,8 +5,7 @@ export const cardStyles = StyleSheet.create({
 
     primaryCard: {
         width: 200,
-        height: 100,
-        padding: 20,
+        height: 180,
         margin: 10,
         color: Colors.black,
         backgroundColor: Colors.white,
