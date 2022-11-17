@@ -1,34 +1,13 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import React, { useContext } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
-import { PrimaryButton } from "../components";
+import React from "react";
+import { Button, StyleSheet, View } from "react-native";
+import CabinTrip from "../components/CabinTrip";
+import { HomeStackParamList } from "../navigation/HomeStack";
 
-import Firebase from "../config/firebase";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider";
-import CabinTrip from "./CabinTrip";
-
-const auth = Firebase.auth();
-type StackParamList = {
-  Home: undefined;
-  Profile: undefined;
-};
-
-type Props = NativeStackScreenProps<StackParamList, "Home", "Profile">;
+type Props = NativeStackScreenProps<HomeStackParamList, "Home", "Profile">;
 
 export default function HomeScreen({ navigation }: Props) {
-  const { user } = useContext(AuthenticatedUserContext);
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleGoToProfile = () => {
-    console.log("profile");
-  };
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
@@ -39,26 +18,14 @@ export default function HomeScreen({ navigation }: Props) {
         <Button
           onPress={() => navigation.navigate("Profile")}
           title="Go to profile"
-          color="#fff"
         />
       </View>
     </View>
   );
 }
-
-{
-  /* <IconButton
-          color="#fff"
-          size={24}
-          onPress={handleSignOut}
-          name="logout"
-        /> */
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e93b81",
     paddingTop: 50,
     paddingHorizontal: 12,
   },

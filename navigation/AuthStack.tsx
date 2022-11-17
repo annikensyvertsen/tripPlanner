@@ -4,11 +4,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/LoginScreen";
 import SignupScreen from "../screens/SignupScreen";
 
-type StackParamList = {
+export type AuthStackParamList = {
   Login: undefined;
   Signup: undefined;
 };
-const Stack = createStackNavigator<StackParamList>();
+
+const Stack = createStackNavigator<AuthStackParamList>();
 
 console.log("in authstack");
 export default function AuthStack() {

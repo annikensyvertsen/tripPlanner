@@ -1,45 +1,20 @@
 [
     {
+    "id": "sdsdaffa",
     "name": "trysiltur",
-    "members": "111, 222",
+    "members": ["111", "222"],
+    "address": "snøbakken 73, 8023 Trysil",
     "startDate": "23 juni",
     "endDate": "25 juni",
-    "groups": "",
-    "shoppingList": [
-        {
-        "name": "tomat",
-        "number": 13,
-        "isIncluded": false
-        },
-        {
-            "name": "agurk",
-            "number":3,
-            "isIncluded": false
-            }
-        ],
-    "tasks": [
-        {
-        "name": "leie bil",
-        "responsible": "121",
-        "isFinished": false
-        },
-        {
-            "name": "leie hytte",
-            "responsible": "222",
-            "isFinished": false
-            }
-        ],
-        "plan": [
-            {
-            "name": "leie bil",
-            "responsible": "121",
-            "timeStamp": "23 juni"
-        },
-            {
-                "name": "leie hytte",
-                "responsible": "222",
-                "timestamp": "24 juni"
-                }
-            ]
+    "groups": ""
+    } ,
+    {
+    "id": "pøødaffa",
+    "name": "juletur",
+    "members": ["111", "222"],
+    "address": "vesleveien 73, 4039 Trondheim",
+    "startDate": "23 des",
+    "endDate": "25 des",
+    "groups": ""
     } 
 ]   
