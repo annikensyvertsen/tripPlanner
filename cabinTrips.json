@@ -2,7 +2,7 @@
     {
     "id": "sdsdaffa",
     "name": "trysiltur",
-    "members": "111, 222",
+    "members": ["111", "222"],
     "address": "snøbakken 73, 8023 Trysil",
     "startDate": "23 juni",
     "endDate": "25 juni",
@@ -11,7 +11,7 @@
     {
     "id": "pøødaffa",
     "name": "juletur",
-    "members": "111, 222",
+    "members": ["111", "222"],
     "address": "vesleveien 73, 4039 Trondheim",
     "startDate": "23 des",
     "endDate": "25 des",

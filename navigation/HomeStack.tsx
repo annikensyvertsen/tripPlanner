@@ -13,7 +13,6 @@ export type HomeStackParamList = {
 const Stack = createStackNavigator<HomeStackParamList>();
 
 export default function HomeStack() {
-  console.log("homestack");
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />

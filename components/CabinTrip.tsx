@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import trips from "../cabinTrips.json";
 import { Colors } from "../utils/colors";
 import CabinTripCard from "./CabinTripCard";
