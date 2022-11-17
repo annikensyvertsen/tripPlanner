@@ -21,5 +21,26 @@ export const textStyles = StyleSheet.create({
     paragraph: {
         fontSize: 14,
         color: Colors.black
+    },
+
+    primaryButtonText: {
+        fontSize: 16,
+        lineHeight: 21,
+        letterSpacing: 0.25,
+        color: Colors.white,
+          
+    }
+})
+
+export const buttonStyles = StyleSheet.create({
+
+    primaryButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 10,
+        elevation: 3,
+        backgroundColor: Colors.blue,
     }
 })
