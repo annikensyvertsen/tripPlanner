@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { HomeStackParamList } from "../navigation/HomeStack";
 import { cardStyles, textStyles } from "../styles";
 import { Colors } from "../utils/colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 interface Props {
   cabinTrip: any;
@@ -35,7 +36,11 @@ export default function CabinTripCard(props: Props) {
           </View>
           <View style={styles.textWrapper}>
             <Text style={styles.title}>{cabinTrip.name}</Text>
-            <Text style={styles.adress}>{cabinTrip.address}</Text>
+            <View style={styles.textAndIcon}>
+              <Ionicons name="location-outline" size={12} color="hotpink" />
+
+              <Text style={styles.adress}>{cabinTrip.address}</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -93,5 +98,9 @@ const styles = StyleSheet.create({
   adress: {
     fontSize: 12,
     textTransform: "capitalize",
+    marginLeft: 5,
+  },
+  textAndIcon: {
+    flexDirection: "row",
   },
 });
