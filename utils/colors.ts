@@ -5,5 +5,6 @@ export const Colors = {
     white: "#ffffff",
     black: "000000",
     boxShadow: "#D5D5D5",
-    grey1: "#A6A2A2"
+    grey1: "#A6A2A2",
+    primaryLight: "#F4DEE3"
   }
