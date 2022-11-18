@@ -8,6 +8,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   Keyboard,
+  Pressable,
 } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { InputField } from "../components";
@@ -22,13 +23,16 @@ import {
   DateData,
 } from "react-native-calendars";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "Home", "Profile">;
-
 export default function CabinTripScreen() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
+  const twoDaysFromNow = new Date().setDate(new Date().getDate() + 2);
+  const [endDate, setEndDate] = useState(
+    new Date(twoDaysFromNow).toISOString().slice(0, 10)
+  );
   const [description, setDescription] = useState("");
   const [guests, setGuests] = useState([]);
   const [fields, setFields] = useState([]);
@@ -48,20 +52,26 @@ export default function CabinTripScreen() {
     // set to two days after from date
     if (!isToDate) {
       if (
-        timeStampFromDate < today ||
+        timeStampSelectedDate < today ||
         timeStampSelectedDate > timeStampToDate
       ) {
         timeStampToDate.setDate(timeStampFromDate.getDate() + 2);
+        let isoStringDate = timeStampToDate.toISOString().slice(0, 10);
+        setEndDate(isoStringDate);
+        setStartDate(selectedDate.dateString);
       } else {
         setStartDate(selectedDate.dateString);
       }
     }
     if (isToDate) {
       if (
-        timeStampToDate < today ||
+        timeStampSelectedDate < today ||
         timeStampSelectedDate < timeStampFromDate
       ) {
         timeStampToDate.setDate(timeStampFromDate.getDate() + 2);
+        let isoStringDate = timeStampToDate.toISOString().slice(0, 10);
+        setEndDate(isoStringDate);
+        setStartDate(selectedDate.dateString);
       } else {
         setEndDate(selectedDate.dateString);
       }
@@ -96,48 +106,59 @@ export default function CabinTripScreen() {
 
           <View style={styles.inputFieldWrapper}>
             <Text style={styles.inputLabel}>Dato</Text>
+
             <View style={styles.dateFields}>
-              <View>
-                <TextInput
-                  style={styles.dateInputField}
-                  placeholder={"2022-11-12"}
-                  value={startDate}
-                  editable={false}
-                  onChangeText={(startDate) => setStartDate(startDate)}
-                />
-                <Ionicons
+              <View style={styles.dateField}>
+                <Pressable
                   onPress={() => {
                     setShouldDisplayFromCalendar(!shouldDisplayFromCalendar);
                     setShouldDisplayToCalendar(false);
                   }}
-                  name="calendar"
-                  size={14}
-                  color={Colors.primary}
-                />
-              </View>
-              <View>
-                <TextInput
                   style={styles.dateInputField}
-                  placeholder={"2022-13-12"}
-                  value={endDate}
-                  onChangeText={(endDate) => setEndDate(endDate)}
-                />
-                <Ionicons
+                >
+                  {startDate.length < 1 ? (
+                    <Text style={styles.placeholderText}>Fra</Text>
+                  ) : (
+                    <Text>{startDate}</Text>
+                  )}
+                  <View style={styles.iconWrapper}>
+                    <Ionicons
+                      name="calendar"
+                      size={14}
+                      color={Colors.primary}
+                    />
+                  </View>
+                </Pressable>
+              </View>
+
+              <View style={styles.dateField}>
+                <Pressable
                   onPress={() => {
                     setShouldDisplayToCalendar(!shouldDisplayToCalendar);
                     setShouldDisplayFromCalendar(false);
                   }}
-                  name="calendar"
-                  size={14}
-                  color={Colors.primary}
-                />
+                  style={styles.dateInputField}
+                >
+                  {endDate.length < 1 ? (
+                    <Text style={styles.placeholderText}>Til</Text>
+                  ) : (
+                    <Text>{endDate}</Text>
+                  )}
+                  <View style={styles.iconWrapper}>
+                    <Ionicons
+                      name="calendar"
+                      size={14}
+                      color={Colors.primary}
+                    />
+                  </View>
+                </Pressable>
               </View>
             </View>
+
             {shouldDisplayFromCalendar && (
               <Calendar
                 onDayPress={(day) => {
                   checkDates(day, false);
-                  //setStartDate(day.dateString);
                 }}
               />
             )}
@@ -145,8 +166,6 @@ export default function CabinTripScreen() {
               <Calendar
                 onDayPress={(day) => {
                   checkDates(day, true);
-
-                  //setEndDate(day.dateString);
                 }}
               />
             )}
@@ -202,7 +221,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grey2,
     padding: 10,
     borderRadius: 6,
-    width: 150,
+    width: 170,
+    justifyContent: "center",
   },
   inputFieldBig: {
     backgroundColor: Colors.grey2,
@@ -222,5 +242,16 @@ const styles = StyleSheet.create({
   },
   dateFields: {
     flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  dateField: {
+    justifyContent: "center",
+  },
+  iconWrapper: {
+    position: "absolute",
+    right: 10,
+  },
+  placeholderText: {
+    color: "grey",
   },
 });
